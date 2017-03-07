@@ -9,8 +9,8 @@ TreeNode::TreeNode(City data)
 
 bool TreeNode::isLeaf()
 {
-		if (leftPtr == nullptr && rightPtr == nullptr) {
-			return true;
+	if (leftPtr == nullptr && rightPtr == nullptr) {
+		return true;
 	}
 	return false;
 }
