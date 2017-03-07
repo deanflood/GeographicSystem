@@ -208,19 +208,19 @@ void BinarySearchTree::nearByCities(TreeNode * node, pair<string, string> coordi
 //http://stackoverflow.com/questions/365826/calculate-distance-between-2-gps-coordinates
 double BinarySearchTree::calculateDistance(pair<string, string> c1, pair<string, string> c2)
 {
-	const double degreeToRadius = (3.13159 / 180);
+	const double degreeToRadius = (3.14159 / 180);
 	const int earthRadius = 6367;
 
-	double Latitude1 = stod(c1.first);
-	double Longitude1 = stod(c1.second);
-	double Latitude2 = stod(c2.first);
-	double Longitude2 = stod(c2.second);
+	double latitude1 = stod(c1.first);
+	double longitude1 = stod(c1.second);
+	double latitude2 = stod(c2.first);
+	double longitude2 = stod(c2.second);
 
-	double latDiff = (Latitude2 - Latitude1) * degreeToRadius;
-	double longDiff = (Longitude2 - Longitude1) * degreeToRadius;
+	double latDiff = (latitude2 - latitude1) * degreeToRadius;
+	double longDiff = (longitude2 - longitude1) * degreeToRadius;
 
 
-	double a = pow(sin(latDiff / 2.0), 2) + cos(Latitude1*degreeToRadius) * cos(Latitude2* degreeToRadius) * pow(sin(longDiff / 2.0), 2);
+	double a = pow(sin(latDiff / 2.0), 2) + cos(latitude1*degreeToRadius) * cos(latitude2* degreeToRadius) * pow(sin(longDiff / 2.0), 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 	double d = earthRadius * c;
 
