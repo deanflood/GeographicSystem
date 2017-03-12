@@ -21,9 +21,13 @@ int main() {
 	tree.add(city6);
 	tree.add(city7);
 
-	tree.nearByCities(make_pair("37.7749", "122.4194"), 1000);
+	//tree.nearByCities(make_pair("37.7749", "122.4194"), 1000);
+
+	tree.deleteNode("Washington DC");
+
+	tree.printInOrder();
+	cout << endl;
   
-	//cout << tree.calculateDistance(make_pair("36.1699", "115.1398"), make_pair("37.7749", "122.4194"));
 	system("pause");
 	return 1;
 }

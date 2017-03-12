@@ -78,33 +78,38 @@ void BinarySearchTree::add(TreeNode * toAdd, TreeNode * addHere)
 
 TreeNode * BinarySearchTree::deleteNode(TreeNode * node, string cityName)
 {
-	//TODO
-	if (node == nullptr) {
-		cout << cityName << " not found!" << endl;
-		return false;
-	}
-	else if (node->leftPtr != nullptr && node->leftPtr->data.name.compare(cityName) == 0) {
-		if (node->leftPtr->isLeaf()) {
-			delete node->leftPtr;
-			node->leftPtr = nullptr;
+	if (node != nullptr) {
+		if (cityName.compare(node->data.name) < 0) {
+			node->leftPtr = deleteNode(node->leftPtr, cityName);
 		}
-		return false;
-	}
-	else if (node->rightPtr != nullptr && node->rightPtr->data.name.compare(cityName) == 0) {
-		if (node->rightPtr->isLeaf()) {
-			delete node->rightPtr;
-			node->rightPtr = nullptr;
+		else if (cityName.compare(node->data.name) > 0) {
+			node->rightPtr = deleteNode(node->rightPtr, cityName);
 		}
-		return false;
+		else {
+			if (node->leftPtr == nullptr && node->rightPtr == nullptr) {
+				delete node;
+				node = nullptr;
+			}
+			else if (node->leftPtr == nullptr) {
+				TreeNode * temp = node;
+				node = node->rightPtr;
+				delete temp;
+			}
+			else if (node->rightPtr == nullptr) {
+				TreeNode * temp = node;
+				node = node->leftPtr;
+				delete temp;
+			}
+			else {
+				TreeNode * temp = findMin(node->rightPtr);
+				node->data = temp->data;
+				node->rightPtr = deleteNode(node->rightPtr, temp->data.name);
+			}
+		}
 	}
-
-	else if (node->data.name.compare(cityName) < 0) {
-		deleteNode(node->rightPtr, cityName);
-	}
-	else if (node->data.name.compare(cityName) > 0) {
-		deleteNode(node->leftPtr, cityName);
-	}
+	return node;
 }
+
 
 int BinarySearchTree::height(TreeNode * node)
 {
