@@ -110,15 +110,11 @@ TreeNode * BinarySearchTree::deleteNode(TreeNode * node, string cityName)
 	return node;
 }
 
-
 int BinarySearchTree::height(TreeNode * node)
 {
 
 	if (node == nullptr) {
 		return -1;
-	}
-	else if (node->isLeaf()) {
-		return 1;
 	}
 	else {
 		return 1 + max(height(node->leftPtr), height(node->rightPtr));
