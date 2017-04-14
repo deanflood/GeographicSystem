@@ -24,6 +24,11 @@ void BinarySearchTree::deleteNode(string cityName)
 	deleteNode(root, cityName);
 }
 
+void BinarySearchTree::deleteNode(pair<string, string> coordinates)
+{
+	deleteNode(root, coordinates);
+}
+
 bool BinarySearchTree::searchTree(string cityName)
 {
 	return searchTree(root, cityName);
@@ -108,6 +113,19 @@ TreeNode * BinarySearchTree::deleteNode(TreeNode * node, string cityName)
 		}
 	}
 	return node;
+}
+
+bool BinarySearchTree::deleteNode(TreeNode * node, pair<string, string> coordinates)
+{
+	if (node == nullptr) {
+		return false;
+	}
+	else if (node->data.coordinates.first == coordinates.first && node->data.coordinates.second == coordinates.second) {
+		deleteNode(node->data.name);
+	}
+	else {
+		return deleteNode(node->leftPtr, coordinates) || deleteNode(node->rightPtr, coordinates);
+	}
 }
 
 int BinarySearchTree::height(TreeNode * node)

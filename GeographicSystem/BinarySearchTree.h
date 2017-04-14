@@ -23,6 +23,7 @@ private:
 	TreeNode * root;
 	void add(TreeNode*, TreeNode*);
 	TreeNode * deleteNode(TreeNode *, string);
+	bool deleteNode(TreeNode *, pair<string, string>);
 	int height(TreeNode*);
 	void printInOrder(TreeNode *);
 	bool searchTree(TreeNode*, string);
