@@ -33,7 +33,5 @@ private:
 	TreeNode * findMax(TreeNode *);
 	void nearByCities(TreeNode *, pair<string, string>, int);
 	double calculateDistance(pair<string, string>, pair<string, string>);
-
-
 };
 

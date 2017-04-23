@@ -155,7 +155,6 @@ bool BinarySearchTree::searchTree(TreeNode * node, string cityName)
 		return false;
 	}
 	else if (node->data.name.compare(cityName) == 0) {
-		cout << node->data;
 		return true;
 	}
 	else if (node->data.name.compare(cityName) < 0) {
