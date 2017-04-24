@@ -22,6 +22,7 @@ void BinarySearchTree::add(City city)
 void BinarySearchTree::deleteNode(string cityName)
 {
 	deleteNode(root, cityName);
+	int i = 0;
 }
 
 void BinarySearchTree::deleteNode(pair<string, string> coordinates)
@@ -61,6 +62,11 @@ void BinarySearchTree::nearByCities(pair<string, string> coordinates, int distan
 	nearByCities(root, coordinates, distance);
 }
 
+bool BinarySearchTree::isRootNull()
+{
+	return (root == nullptr);
+}
+
 void BinarySearchTree::add(TreeNode * toAdd, TreeNode * addHere)
 {
 	if (toAdd->data < addHere->data) {
@@ -81,9 +87,9 @@ void BinarySearchTree::add(TreeNode * toAdd, TreeNode * addHere)
 	}
 }
 
-TreeNode * BinarySearchTree::deleteNode(TreeNode * node, string cityName)
+TreeNode * BinarySearchTree::deleteNode(TreeNode *& node, string cityName)
 {
-	if (node != nullptr) {
+		if (node != nullptr) {
 		if (cityName.compare(node->data.name) < 0) {
 			node->leftPtr = deleteNode(node->leftPtr, cityName);
 		}
