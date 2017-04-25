@@ -9,7 +9,6 @@ void BinarySearchTree::add(City city)
 {
 	if (!searchTree(root, city.coordinates)) {
 		TreeNode * toAdd = new TreeNode(city);
-
 		if (root == nullptr) {
 			root = toAdd;
 		}

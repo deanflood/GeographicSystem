@@ -6,18 +6,16 @@
 using namespace std;
 
 void randomCityGenerator(BinarySearchTree &tree) {
-	string latitude;
-	string longitude;
-	double averageTemperature;
-	int population;
+	string latitude = "";
+	string longitude = "";
+	double averageTemperature = 15;
+	int population = 100;
 	string cityName;
-	for (int i = 0; i < 100; i++) {
-		latitude = to_string((double)rand() / 180);
-		longitude = to_string((double)rand() / 180);
-		averageTemperature = (double)rand() / 40;
-		population = rand() % 100000;
-		cityName = "City" + std::to_string(population);
-		tree.add(City(cityName, population, averageTemperature, make_pair(latitude, longitude)));
+	for (int i = 0; i < 2500; i++) {
+		latitude = to_string(i);
+		longitude = to_string(i);
+		cityName = "City " + i;
+		tree.add(City(cityName, population, averageTemperature, { latitude, longitude }));
 	}
 }
 
@@ -36,7 +34,6 @@ int main() {
 
 	BinarySearchTree tree = BinarySearchTree();
 
-
 	tree.add(city1);
 	tree.add(city2);
 	tree.add(city3);
@@ -48,29 +45,39 @@ int main() {
 	tree.add(city9);
 	tree.add(city10);
 
-	tree.printInOrder();
-
-	tree.deleteNode("Dublin");
-	tree.deleteNode("Washington DC");
-	tree.deleteNode("New York");
-	tree.deleteNode("San Francisco");
-	tree.deleteNode("Las Vegas");
-	tree.deleteNode("Belfast");
-	tree.deleteNode("Mexico City");
-	tree.deleteNode("Texas");
-	tree.deleteNode("Vancouver");
-	tree.deleteNode("Las Angles");
-
-	cout << endl << "After" << endl;
-
-	tree.printInOrder();
-
-
-
 
 	//Start Time Coordinates
 	boost::timer::cpu_timer coordinateTimer;
 
+	for (int i = 0; i < 100; i++) {
+
+		coordinateTimer.resume();
+
+		tree.add(city1);
+		tree.add(city2);
+		tree.add(city3);
+		tree.add(city4);
+		tree.add(city5);
+		tree.add(city6);
+		tree.add(city7);
+		tree.add(city8);
+		tree.add(city9);
+		tree.add(city10);
+
+		coordinateTimer.stop();
+
+		tree.deleteNode("Dublin");
+		tree.deleteNode("Washington DC");
+		tree.deleteNode("New York");
+		tree.deleteNode("San Francisco");
+		tree.deleteNode("Las Vegas");
+		tree.deleteNode("Belfast");
+		tree.deleteNode("Mexico City");
+		tree.deleteNode("Texas");
+		tree.deleteNode("Vancouver");
+		tree.deleteNode("Las Angles");
+
+	}
 
 	//Output timer
 	boost::timer::cpu_times coorElapsed = coordinateTimer.elapsed();
