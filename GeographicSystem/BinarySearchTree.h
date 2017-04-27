@@ -1,7 +1,6 @@
 #pragma once
 #include "City.h"
 #include "TreeNode.h"
-#include <iomanip>
 #include <algorithm>    // std::max
 
 using namespace std;
@@ -16,9 +15,7 @@ public:
 	bool searchTree(pair<string, string>);
 	int height();
 	void printInOrder();
-	void prettyPrint();
 	void nearByCities(pair<string, string>, int);
-	bool isRootNull();
 
 private:
 	TreeNode * root;
@@ -29,7 +26,6 @@ private:
 	void printInOrder(TreeNode *);
 	bool searchTree(TreeNode*, string);
 	bool searchTree(TreeNode *, pair<string, string>);
-	void prettyPrint(TreeNode *, int indent = 0);
 	TreeNode * findMin(TreeNode *);
 	TreeNode * findMax(TreeNode *);
 	void nearByCities(TreeNode *, pair<string, string>, int);

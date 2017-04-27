@@ -25,9 +25,9 @@ bool City::operator>(City & city)
 ostream & operator<<(ostream & stream, City & city)
 {
 	stream
-		<< "\nCity: " << city.name;
-	//	<< "\nPopulation: " << city.population 
-	//	<< "\nAverage Temp: " << city.averageTemperature
-	//	<< "\nCoordinates: " << city.coordinates.first << ", " << city.coordinates.second << endl;
+		<< "\nCity: " << city.name
+		<< "\nPopulation: " << city.population 
+		<< "\nAverage Temp: " << city.averageTemperature
+		<< "\nCoordinates: " << city.coordinates.first << ", " << city.coordinates.second << endl;
 	return stream;
 }

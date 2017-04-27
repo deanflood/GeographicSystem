@@ -51,19 +51,9 @@ void BinarySearchTree::printInOrder()
 	}
 }
 
-void BinarySearchTree::prettyPrint()
-{
-	prettyPrint(root);
-}
-
 void BinarySearchTree::nearByCities(pair<string, string> coordinates, int distance)
 {
 	nearByCities(root, coordinates, distance);
-}
-
-bool BinarySearchTree::isRootNull()
-{
-	return (root == nullptr);
 }
 
 void BinarySearchTree::add(TreeNode * toAdd, TreeNode * addHere)
@@ -156,7 +146,6 @@ void BinarySearchTree::printInOrder(TreeNode * node)
 bool BinarySearchTree::searchTree(TreeNode * node, string cityName)
 {
 	if (node == nullptr) {
-		cout << cityName << " not found!" << endl;
 		return false;
 	}
 	else if (node->data.name.compare(cityName) == 0) {
@@ -180,24 +169,6 @@ bool BinarySearchTree::searchTree(TreeNode * node, pair<string, string> coordina
 	}
 	else {
 		return searchTree(node->leftPtr, coordinates) || searchTree(node->rightPtr, coordinates);
-	}
-}	
-
-void BinarySearchTree::prettyPrint(TreeNode * node, int indent)
-{
-	if (node != nullptr) {
-		if (node->rightPtr) {
-			prettyPrint(node->rightPtr, indent + 4);
-		}
-		if (indent) {
-			cout << setw(indent) << ' ';
-		}
-		if (node->rightPtr) cout << " /\n" << setw(indent) << ' ';
-		cout << node->data << "\n ";
-		if (node->leftPtr) {
-			cout << setw(indent) << ' ' << " \\\n";
-			prettyPrint(node->leftPtr, indent + 4);
-		}
 	}
 }
 
@@ -228,24 +199,32 @@ void BinarySearchTree::nearByCities(TreeNode * node, pair<string, string> coordi
 	}
 }
 
-//http://stackoverflow.com/questions/365826/calculate-distance-between-2-gps-coordinates
+/***************************************************************************************
+
+*    Title: Calculate the distance between two coordinates by latitude and longitude
+*    Author: Shields, W
+*    Date: Dec 13 '08
+*    Code version: NA
+*    Availability: http://stackoverflow.com/a/365853/5440987
+
+***************************************************************************************/
 double BinarySearchTree::calculateDistance(pair<string, string> c1, pair<string, string> c2)
 {
-	const double degreeToRadius = (3.14159 / 180);
-	const int earthRadius = 6367;
+	const double DEG_TO_RAD = (3.14159 / 180);
+	const int EARTH_RADIUS = 6367;
 
 	double latitude1 = stod(c1.first);
 	double longitude1 = stod(c1.second);
 	double latitude2 = stod(c2.first);
 	double longitude2 = stod(c2.second);
 
-	double latDiff = (latitude2 - latitude1) * degreeToRadius;
-	double longDiff = (longitude2 - longitude1) * degreeToRadius;
+	double latDiff = (latitude2 - latitude1) * DEG_TO_RAD;
+	double longDiff = (longitude2 - longitude1) * DEG_TO_RAD;
 
 
-	double a = pow(sin(latDiff / 2.0), 2) + cos(latitude1*degreeToRadius) * cos(latitude2* degreeToRadius) * pow(sin(longDiff / 2.0), 2);
+	double a = pow(sin(latDiff / 2.0), 2) + cos(latitude1*DEG_TO_RAD) * cos(latitude2* DEG_TO_RAD) * pow(sin(longDiff / 2.0), 2);
 	double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-	double d = earthRadius * c;
+	double d = EARTH_RADIUS * c;
 
 	return d;
 }
