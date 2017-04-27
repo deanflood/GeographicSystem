@@ -1,9 +1,0 @@
-﻿  BinarySearchTree.cpp
-  Generating Code...
-c:\users\ibm_admin\documents\visual studio 2015\projects\geographicsystem\geographicsystem\binarysearchtree.cpp(124): warning C4715: 'BinarySearchTree::deleteNode': not all control paths return a value
-c:\users\ibm_admin\documents\visual studio 2015\projects\geographicsystem\geographicsystem\binarysearchtree.cpp(160): warning C4715: 'BinarySearchTree::searchTree': not all control paths return a value
-  Compiling...
-  Source.cpp
-  Generating Code...
-  GeographicSystem.vcxproj -> C:\Users\IBM_ADMIN\documents\visual studio 2015\Projects\GeographicSystem\Debug\GeographicSystem.exe
-  GeographicSystem.vcxproj -> C:\Users\IBM_ADMIN\documents\visual studio 2015\Projects\GeographicSystem\Debug\GeographicSystem.pdb (Partial PDB)
